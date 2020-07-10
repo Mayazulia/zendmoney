@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: zen
+  version: '1.0'
+  contact:
+    name: maya
+    url: zendmoney.com
+    email: maya.p@zendmoney.com
+servers:
+  - url: 'http://zendmoney.com'
+paths:
+  /ZensPartnerAPIDev/api/ZmartBalance:
+    get:
+      summary: Balance
+      tags: []
+      responses:
+        '200':
+          description: |2
+
+                  {"code":"200",
+                  "message":"Success",
+                  "items":{
+                  "AccountId":"coba1",
+                  "Currency":"IDR",
+                  "Balance":10000000.00}}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/balance'
+      operationId: get-ZensPartnerAPIDev-api-ZmartBalance
+      description: 'hello ini percobaan '
+      parameters:
+        - schema:
+            type: string
+            example: '001'
+          in: header
+          name: PartnetID
+          description: given by zenmpney
+          required: true
+components:
+  schemas:
+    balance:
+      title: balance
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    API Key - 1:
+      type: oauth2
